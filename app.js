@@ -1,13 +1,12 @@
 const express = require('express');
 const { sequelize } = require('./models');
-const users = require('./routes/users');
+const users = require('./routes/user');
 const path = require('path');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 require('dotenv').config();
 
-const app = express({ path: path.resolve(__dirname, '../.env') });
-
-app.use('/api', users);
+const app = express();
 
 function getCookies(req) {
     if (req.headers.cookie == null) return {};
@@ -39,23 +38,22 @@ function authToken(req, res, next) {
     });
 }
 
-
-app.get('/register', (req, res) => {
+app.get('/admin/register', (req, res) => {
     res.sendFile('register.html', { root: './static' });
 });
 
-app.get('/login', (req, res) => {
+app.get('/admin/login', (req, res) => {
     res.sendFile('login.html', { root: './static' });
 });
 
-app.get('/', authToken, (req, res) => {
+app.get('/admin/', authToken, (req, res) => {
     res.sendFile('index.html', { root: './static' });
 });
 
 
 app.use(express.static(path.join(__dirname, 'static')));
 
-app.listen({ port: 8069 }, async () => {
+app.listen({ port: 8690 }, async () => {
     await sequelize.authenticate();
     console.log("Started App");
 });

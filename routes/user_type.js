@@ -1,5 +1,5 @@
 const express = require('express');
-const { sequelize, user_types } = require('../models');
+const { sequelize, user_type } = require('../models');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
@@ -26,14 +26,14 @@ function authToken(req, res, next) {
 route.use(authToken);
 
 route.get('/user_types', (req, res) => {
-    user_types.findAll()
+    user_type.findAll()
         .then( rows => res.json(rows) )
         .catch( err => res.status(500).json(err) );
 });
 
 route.get('/user_types/:id', (req, res) => {
 
-    user_types.findOne({ where: { id: req.params.id } })
+    user_type.findOne({ where: { id: req.params.id } })
         .then( rows => res.json(rows) )
         .catch( err => res.status(500).json(err) );
 
@@ -41,7 +41,7 @@ route.get('/user_types/:id', (req, res) => {
 
 route.post('/user_types', (req, res) => {
     
-    user_types.create({ name: req.body.name, email: req.body.email })
+    user_type.create({ name: req.body.name, email: req.body.email })
         .then( rows => res.json(rows) )
         .catch( err => res.status(500).json(err) );
 
@@ -49,7 +49,7 @@ route.post('/user_types', (req, res) => {
 
 route.put('/user_types/:id', (req, res) => {
     
-    user_types.findOne({ where: { id: req.params.id } })
+    user_type.findOne({ where: { id: req.params.id } })
         .then( usr => {
             usr.name = req.body.name;
             usr.email = req.body.email;
@@ -64,7 +64,7 @@ route.put('/user_types/:id', (req, res) => {
 
 route.delete('/user_types/:id', (req, res) => {
 
-    user_types.findOne({ where: { id: req.params.id } })
+    user_type.findOne({ where: { id: req.params.id } })
         .then( usr => {
             usr.destroy()
                 .then( rows => res.json(rows) )

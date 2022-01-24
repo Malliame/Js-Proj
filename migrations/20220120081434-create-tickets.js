@@ -1,4 +1,7 @@
 'use strict';
+
+const ticket_solution = require("../models/ticket_solution");
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('tickets', {
@@ -16,6 +19,22 @@ module.exports = {
       },
       solved: {
         type: Sequelize.BOOLEAN
+      }, 
+      type: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        reference:{
+          model: 'tiket_types',
+          key: 'id'
+        }
+      },
+      solution: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        reference:{
+          model: 'ticket_solutions',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

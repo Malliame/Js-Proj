@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+const tickets = require('./tickets');
+const user_type = require('./user_type');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -11,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //this.hasOne(user_type, {foreignKey: 'name', as: 'type'})
+      //this.hasMany(tickets, {foreignKey: 'id', as: 'tickets'})
     }
   }
   User.init({
@@ -28,6 +32,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    type: {
       type: DataTypes.STRING,
       allowNull: false
     }

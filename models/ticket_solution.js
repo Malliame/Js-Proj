@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const tickets = require('./tickets');
 module.exports = (sequelize, DataTypes) => {
   class ticket_solution extends Model {
     /**
@@ -11,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //this.belongsTo(tickets,{foreignKey : 'id', as: 'ticket'});
     }
   }
   ticket_solution.init({

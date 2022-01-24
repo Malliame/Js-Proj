@@ -2,8 +2,10 @@
 const {
   Model
 } = require('sequelize');
+const ticket_solutions= require('./ticket_solution');
+const ticket_types = require('./ticket_type');
 module.exports = (sequelize, DataTypes) => {
-  class tickets extends Model {
+  class ticket extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,15 +13,27 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //this.belongsTo(User,{foreignKey : 'id', as: 'reciever'});
+      //this.belongsTo(User,{foreignKey : 'id', as: 'giver'});
+      //this.hasOne(ticket_types,{foreignKey: 'id', as: 'type'});
+      //this.hasOne(ticket_solutions,{foreignKey: 'id', as: 'solution'});
     }
   }
-  tickets.init({
+  ticket.init({
     due_date: DataTypes.DATE,
     amount: DataTypes.INTEGER,
-    solved: DataTypes.BOOLEAN
+    solved: DataTypes.BOOLEAN,
+    type: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    solution: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    }
   }, {
     sequelize,
     modelName: 'tickets',
   });
-  return tickets;
+  return ticket;
 };

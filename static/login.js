@@ -1,14 +1,12 @@
 function init() {
 
     document.getElementById('btn').addEventListener('click', e => {
-       // e.preventDefault();
+        e.preventDefault();
 
         const data = {
             username: document.getElementById('username').value,
             password: document.getElementById('password').value
         };
-
-        console.log("here" + data);
 
         fetch('http://127.0.0.1:8420/login', {
             method: 'POST',

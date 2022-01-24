@@ -3,7 +3,7 @@ function init() {
     const cookies = document.cookie.split('=');
     const token = cookies[cookies.length - 1];
 
-    fetch('http://127.0.0.1:8069/api/users', {
+    /*fetch('http://127.0.0.1:8069/admin/users', {
         headers: {
             'Authorization': `Bearer ${token}`
         }

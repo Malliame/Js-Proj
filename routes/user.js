@@ -1,5 +1,5 @@
 const express = require('express');
-const { sequelize, ticket_types } = require('../models');
+const { sequelize, User } = require('../models');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
@@ -25,31 +25,31 @@ function authToken(req, res, next) {
 
 route.use(authToken);
 
-route.get('/ticket_solution', (req, res) => {
-    ticket_solution.findAll()
+route.get('/users', (req, res) => {
+    User.findAll()
         .then( rows => res.json(rows) )
         .catch( err => res.status(500).json(err) );
 });
 
-route.get('/ticket_solution/:id', (req, res) => {
+route.get('/users/:id', (req, res) => {
 
-    ticket_solution.findOne({ where: { id: req.params.id } })
+    User.findOne({ where: { id: req.params.id } })
         .then( rows => res.json(rows) )
         .catch( err => res.status(500).json(err) );
 
 });
 
-route.post('/ticket_solution', (req, res) => {
+route.post('/users', (req, res) => {
     
-    ticket_solution.create({ name: req.body.name, email: req.body.email })
+    User.create({ name: req.body.name, email: req.body.email })
         .then( rows => res.json(rows) )
         .catch( err => res.status(500).json(err) );
 
 });
 
-route.put('/ticket_solution/:id', (req, res) => {
+route.put('/users/:id', (req, res) => {
     
-    ticket_solution.findOne({ where: { id: req.params.id } })
+    User.findOne({ where: { id: req.params.id } })
         .then( usr => {
             usr.name = req.body.name;
             usr.email = req.body.email;
@@ -62,9 +62,9 @@ route.put('/ticket_solution/:id', (req, res) => {
 
 });
 
-route.delete('/ticket_solution/:id', (req, res) => {
+route.delete('/users/:id', (req, res) => {
 
-    ticket_solution.findOne({ where: { id: req.params.id } })
+    User.findOne({ where: { id: req.params.id } })
         .then( usr => {
             usr.destroy()
                 .then( rows => res.json(rows) )
