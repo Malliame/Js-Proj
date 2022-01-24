@@ -43,11 +43,27 @@ app.get('/admin/register', (req, res) => {
 });
 
 app.get('/admin/login', (req, res) => {
-    res.sendFile('login.html', { root: './static' });
+    res.sendFile('login.html', { root: './static/' });
 });
 
 app.get('/admin/', authToken, (req, res) => {
     res.sendFile('index.html', { root: './static' });
+});
+
+app.get('/admin/tickets', authToken, (req, res) => {
+    res.sendFile('tickets.html', { root: './static' });
+});
+
+app.get('/admin/drivers', authToken, (req, res) => {
+    res.sendFile('drivers.html', { root: './static' });
+});
+
+app.get('/admin/laws', authToken, (req, res) => {
+    res.sendFile('laws.html', { root: './static' });
+});
+
+app.get('/admin/solutions', authToken, (req, res) => {
+    res.sendFile('solutions.html', { root: './static' });
 });
 
 

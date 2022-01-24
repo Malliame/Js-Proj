@@ -13,28 +13,16 @@ module.exports = {
       },
       due_date: {
         type: Sequelize.DATE
+      }, 
+      type: {
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       amount: {
         type: Sequelize.INTEGER
       },
       solved: {
-        type: Sequelize.BOOLEAN
-      }, 
-      type: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        reference:{
-          model: 'tiket_types',
-          key: 'id'
-        }
-      },
-      solution: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        reference:{
-          model: 'ticket_solutions',
-          key: 'id'
-        }
+        type: Sequelize.BOOLEAN,
       },
       createdAt: {
         allowNull: false,

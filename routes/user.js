@@ -23,7 +23,7 @@ function authToken(req, res, next) {
     });
 }
 
-route.use(authToken);
+//route.use(authToken);
 
 route.get('/users', (req, res) => {
     User.findAll()

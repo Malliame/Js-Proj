@@ -8,7 +8,7 @@ require('dotenv').config();
 const app = express();
 
 var corsOptions = {
-    origin: 'http://127.0.0.1:8690',
+    origin: 'http://localhost:8690',
     optionsSuccessStatus: 200
 }
 app.use(express.json());
@@ -29,6 +29,7 @@ app.post('/register', (req, res) => {
 
     User.create(obj).then( rows => {
         
+
         const usr = {
             userId: rows.id,
             type: rows.type,
@@ -51,8 +52,6 @@ app.post('/login', (req, res) => {
     console.log("Logging in..");
     User.findOne({ where: { username: req.body.username } })
         .then( usr => {
-            
-            console.log(usr);
 
             if (bcrypt.compareSync(req.body.password, usr.password)) {
 
@@ -64,7 +63,7 @@ app.post('/login', (req, res) => {
         
                 const token = jwt.sign(obj, process.env.ACCESS_TOKEN_SECRET);
             
-                console.log("Logged in as"  + usr.username);
+                console.log("Logged in as "  + usr.username);
                 res.json({ token: token });
             } else {
                 res.status(400).json({ msg: "Invalid credentials"});

@@ -1,0 +1,62 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vquery/5.0.1/v.min.js"></script>
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <title>Driver CRUD</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src='\drivers.js'></script>
+    </head>
+    <body onload="init()">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div style="margin-right: width 50%; float:left">
+                    <h1>Drivers:</h1>
+                    <label for="name" class="form-label">ID:</label>
+                    <input type="text" class="form-control" id="Id" name="Id">
+                    <label for="name" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="FirstName" name="FirstName">
+                    <label for="name" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="LastName" name="LastName">
+                    <label for="name" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="Username" name="Username">
+                    <label for="name" class="form-label">Password</label>
+                    <input type="text" class="form-control" id="Password" name="Password">
+                    <br>
+                    <label for="type">Type of User</label>
+                            <select name="type" id="type">
+                                <option value="Admin">Admin</option>
+                                <option value="Cop">Cop</option>
+                                <option value="Driver">Driver</option>
+                                <option value="Viewer">Viewer</option>
+                            </select>
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-primary" id="edit">Edit Driver</button>
+                    <button type="button" class="btn btn-primary" id="add">Add Driver</button>
+                    <button type="button" class="btn btn-primary" id="delete">Delete Driver</button>
+                    </div>
+                    <div style="margin-left: 55%; width:600px ;" >
+                    <table class="table table-bordered" id="drivers">
+                        <h2>User table:</h2>
+                        <tr><th> ID </th> <th> First Name </th> <th> Last Name </th> <th> Username </th> <th> Password </th> <th> Type </th></tr> 
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

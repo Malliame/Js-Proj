@@ -5,7 +5,7 @@ const userValid = Joi.object({
       first_name: Joi.string().min(1).max(35).required(),
       last_name: Joi.string().min(1).max(35).required(),
       password: Joi.string().min(5).max(20).required(),
-      type: Joi.string().min(1).max(10).required()
+      type: Joi.valid("Admin", "Cop", "Driver", "Viewer"),
       /*
       Admin
       Cop

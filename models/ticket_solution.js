@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   ticket_solution.init({
+    ticket_id: DataTypes.INTEGER,
     court: DataTypes.BOOLEAN,
     date: DataTypes.DATE,
     note: DataTypes.STRING
